@@ -1,0 +1,68 @@
+#include<stdio.h>
+int a[100];
+int SIZE;
+int TOP=(-1),X,OP;
+void push();
+void pop();
+void peep();
+void display();
+void main(){
+printf("Enter size of stack:");
+scanf("%d",&SIZE);
+do{
+printf("Menu:\n1.PUSH\t2.POP\t3.PEEP\t4.DISPLAY\t5.EXIT\nEnter your choice:");
+scanf("%d",&OP);
+switch(OP){
+case 1:push();
+break;
+case 2:pop();
+break;
+case 3:peep();
+break;
+case 4:printf("Displaying Stack:\n");
+display();
+break;
+case 5:break;
+default:printf("Invalid choice");
+}
+}while(OP!=5);
+}
+void push(){
+if(TOP>=SIZE-1){
+printf("Stack Overflow\n");
+}
+else{
+printf("Enter element to PUSH:");
+scanf("%d",&X);
+TOP++;
+a[TOP]=X;
+}
+}
+void pop(){
+if(TOP<0){
+printf("Stack Underflow\n");
+}
+else{
+printf("%d\n",a[TOP]);
+TOP--;
+}
+}
+void peep(){
+printf("Enter position of element to view from top:");
+scanf("%d", &X);
+if (TOP-X+1<0)
+{
+printf("Stack Underflow\n");
+}
+else
+{
+printf(" The %d element from the top is: %d \n", X, a[TOP-X+1]);
+}
+}
+void display(){
+
+int i;
+for(i=TOP;i>=0;i--){
+printf("%d\n",a[i]);
+}
+}
